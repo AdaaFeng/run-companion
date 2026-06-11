@@ -1,0 +1,30 @@
+{
+    "name":  "Zephyr(Sports) · ElevenLabs",
+    "voiceId":  "w4suvABMAbi7G2h7Xwhv",
+    "model":  "eleven_multilingual_v2",
+    "language":  "zh",
+    "generatedAt":  "2026-06-11T16:00:40.6651911Z",
+    "cues":  {
+                 "warmup_start":  "./audio/generated/warmup_start.mp3",
+                 "warmup_halfway":  "./audio/generated/warmup_halfway.mp3",
+                 "warmup_one_minute":  "./audio/generated/warmup_one_minute.mp3",
+                 "run_halfway":  "./audio/generated/run_halfway.mp3",
+                 "run_last_50":  "./audio/generated/run_last_50.mp3",
+                 "walk_halfway":  "./audio/generated/walk_halfway.mp3",
+                 "walk_last_50":  "./audio/generated/walk_last_50.mp3",
+                 "paused":  "./audio/generated/paused.mp3",
+                 "resumed":  "./audio/generated/resumed.mp3",
+                 "cooldown_start":  "./audio/generated/cooldown_start.mp3",
+                 "finished":  "./audio/generated/finished.mp3",
+                 "run_1":  "./audio/generated/run_1.mp3",
+                 "walk_1":  "./audio/generated/walk_1.mp3",
+                 "run_2":  "./audio/generated/run_2.mp3",
+                 "walk_2":  "./audio/generated/walk_2.mp3",
+                 "run_3":  "./audio/generated/run_3.mp3",
+                 "walk_3":  "./audio/generated/walk_3.mp3",
+                 "run_4":  "./audio/generated/run_4.mp3",
+                 "walk_4":  "./audio/generated/walk_4.mp3",
+                 "run_5":  "./audio/generated/run_5.mp3",
+                 "walk_5":  "./audio/generated/walk_5.mp3"
+             }
+}

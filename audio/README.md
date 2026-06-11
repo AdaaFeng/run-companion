@@ -1,7 +1,8 @@
 # ElevenLabs voice pack
 
-The app uses the phone's built-in Chinese voice when this folder does not contain
-`voice-pack.json`.
+The published app currently includes the Zephyr(Sports) Chinese voice pack.
+It falls back to the phone's built-in Chinese voice if `voice-pack.json` or an
+individual audio cue cannot be loaded.
 
 To add a custom ElevenLabs voice without exposing an API key in the public site:
 
