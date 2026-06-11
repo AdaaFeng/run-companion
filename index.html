@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5f1e8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="跑跑陪你" />
+    <meta name="description" content="15 分钟快走，加 5 组 400 米跑和 200 米走的语音陪跑。" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>跑跑陪你</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">INVERLEITH PARK</p>
+          <h1>跑跑陪你</h1>
+        </div>
+        <button id="soundButton" class="icon-button" type="button" aria-label="关闭语音">
+          <span class="sound-on" aria-hidden="true">声</span>
+        </button>
+      </header>
+
+      <section id="setupScreen" class="screen">
+        <div class="hero-card">
+          <p class="hero-kicker">今天不求快，只求出发</p>
+          <h2>一趟刚刚好的<br />公园间歇跑</h2>
+          <p class="hero-copy">
+            我会在每一段开始、过半和快结束时提醒你。跑不动就慢一点，停下来也完全没关系。
+          </p>
+          <div class="route-line" aria-hidden="true">
+            <span class="route-dot"></span>
+            <span class="route-path"></span>
+            <span class="route-ring"></span>
+          </div>
+        </div>
+
+        <ol class="plan-card" aria-label="今日训练计划">
+          <li>
+            <span class="plan-number">01</span>
+            <span><strong>快走去公园</strong><small>15 分钟热身</small></span>
+          </li>
+          <li>
+            <span class="plan-number">02</span>
+            <span><strong>跑 400 米</strong><small>舒服、能控制的速度</small></span>
+          </li>
+          <li>
+            <span class="plan-number">03</span>
+            <span><strong>走 200 米</strong><small>把呼吸慢慢找回来</small></span>
+          </li>
+          <li class="repeat-row"><span>跑走组合，共 5 组</span></li>
+          <li>
+            <span class="plan-number">04</span>
+            <span><strong>慢走回家</strong><small>不计时，好好放松</small></span>
+          </li>
+        </ol>
+
+        <details class="settings-card">
+          <summary>
+            <span>出发前设置</span>
+            <span class="summary-hint">语音与定位</span>
+          </summary>
+          <div class="settings-body">
+            <label class="toggle-row">
+              <span>
+                <strong>语音提醒</strong>
+                <small id="voiceStatus">使用手机自带中文语音</small>
+              </span>
+              <input id="soundToggle" type="checkbox" checked />
+              <span class="toggle" aria-hidden="true"></span>
+            </label>
+            <p class="privacy-note">
+              定位只在训练时用于计算距离，不会上传，也不会保存你的路线。
+            </p>
+          </div>
+        </details>
+
+        <button id="startButton" class="primary-button" type="button">开始出发</button>
+        <p class="safety-note">如果胸痛、头晕或感觉不对，请立即停下并寻求帮助。</p>
+      </section>
+
+      <section id="workoutScreen" class="screen hidden" aria-live="polite">
+        <div class="status-strip">
+          <span id="gpsDot" class="status-dot"></span>
+          <span id="gpsStatus">正在准备定位</span>
+          <span id="roundStatus" class="round-status">热身</span>
+        </div>
+
+        <div id="progressCard" class="progress-card phase-warmup">
+          <p id="phaseLabel" class="phase-label">快走热身</p>
+          <div class="metric-wrap">
+            <span id="metricValue" class="metric-value">15:00</span>
+            <span id="metricUnit" class="metric-unit">剩余</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span id="progressFill" class="progress-fill"></span>
+          </div>
+          <p id="coachLine" class="coach-line">肩膀放松，先把身体叫醒。</p>
+        </div>
+
+        <div class="mini-stats">
+          <div>
+            <span id="totalDistance">0.00</span>
+            <small>总公里</small>
+          </div>
+          <div>
+            <span id="elapsedTime">00:00</span>
+            <small>已运动</small>
+          </div>
+          <div>
+            <span id="completedRounds">0 / 5</span>
+            <small>完成组数</small>
+          </div>
+        </div>
+
+        <div class="workout-actions">
+          <button id="pauseButton" class="secondary-button" type="button">暂停</button>
+          <button id="nextButton" class="text-button" type="button">我已到公园</button>
+        </div>
+
+        <button id="resetButton" class="quiet-button" type="button">结束并重置</button>
+      </section>
+
+      <section id="finishScreen" class="screen hidden">
+        <div class="finish-card">
+          <p class="eyebrow">TODAY, DONE</p>
+          <h2>你回来啦。</h2>
+          <p>不是因为今天容易，而是你真的出门、一步一步做完了。</p>
+          <div class="finish-stats">
+            <div><strong id="finishDistance">0.00</strong><span>公里</span></div>
+            <div><strong id="finishTime">00:00</strong><span>运动时间</span></div>
+          </div>
+        </div>
+        <button id="againButton" class="primary-button" type="button">收下这次，再来一次</button>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status"></div>
+    <audio id="cuePlayer" preload="auto"></audio>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
